@@ -12,8 +12,46 @@ notienenada = true;
  function facturar(){
 
 
-  var dni = document.getElementById('dni').value;
+nombre =document.getElementById('n').value,
+
+telefono = document.getElementById('t').value;
+email = document.getElementById('emaill').value;
+fecha = document.getElementById('fecha').value;
+fechav= document.getElementById('fechav').value;
+dni = document.getElementById('dni').value;
   dni = parseInt(dni)
+
+  cor= /\w+@\w+\.+[a-z]/;
+
+
+  if(nombre == "" || email=="" || fecha=="" || fechav == "" || dni==""){
+
+    swal("Debe llenar todos los campos para continuar",{
+      icon:"error"
+    })
+  }else if(!isNaN(nombre)){
+    swal("El nombre debe ser alfabetico",{
+      icon:"error"
+    })
+  }else if(isNaN(dni)){
+
+    swal("El dni debe ser numerico",{
+      icon:"error"
+    })
+  }else if(isNaN(telefono)){
+
+    swal("El telefono debe ser numerico",{
+      icon:"error"
+    })
+  }else if (!cor.test(email)){
+
+
+    swal("Correo mal escrito",{
+        icon:"error"
+    });
+  }else{
+
+  
  
 existe = false;
 b = false;
@@ -59,6 +97,7 @@ for (var i in facturados) {
     swal("Facturacion realizada",{
       icon:"success"
     })
+}
 }
 resultado();
 
